@@ -1,0 +1,17 @@
+<h2 class="content-block">Modül Ekle
+    <dx-button style="float: right;" type="success" text="Kaydet" (onClick)="modulKaydet()"></dx-button>
+</h2>
+<div class="content-block dx-card responsive-paddings">
+    <dx-form id="form" [formData]="modul" labelLocation="top" [colCountByScreen]="colCountByScreen">
+    </dx-form>
+    <dx-button type="default" text="Alan Ekle" (onClick)="alanEkle()">Alan Ekle</dx-button>
+</div>
+<div *ngFor="let item of alanlar;index as i" class="content-block dx-card responsive-paddings">
+    <label>{{item.id}}. Alan</label>
+    <dx-form id="alanlar_{{i}}" [formData]="item" labelLocation="top" [colCountByScreen]="colCountByScreen">
+        <dxi-item dataField="ad"></dxi-item>
+        <dxi-item dataField="tip"></dxi-item>
+        <dxi-item dataField="ilkdeger"></dxi-item>
+    </dx-form>
+    <dx-button type="danger" text="Kaldır" (onClick)="alanKaldir(item)"></dx-button>
+</div>
