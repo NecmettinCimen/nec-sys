@@ -1,15 +1,20 @@
 <h2 class="content-block">Modül Listesi</h2>
 
-<dx-data-grid class="dx-card wide-card"
-    [dataSource]="dataSource"
-    [showBorders]="false"
-    [focusedRowEnabled]="true"
-    [focusedRowIndex]="0"
-    [columnAutoWidth]="true"
-    [columnHidingEnabled]="true">
+<dx-data-grid
+  class="content-block dx-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
 
-    <dxo-paging [pageSize]="10"></dxo-paging>
-    <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
-    <dxo-filter-row [visible]="true"></dxo-filter-row>
-    
+  <dxi-column caption="Modül" dataField="modul" dataType="string"> </dxi-column>
+  <dxi-column caption="İşlemler" cellTemplate="islemler"> </dxi-column>
+  <dx-button *dxTemplate="let d of 'islemler'" (onClick)="duzenle(d)" text="Düzenle"></dx-button>
+
 </dx-data-grid>

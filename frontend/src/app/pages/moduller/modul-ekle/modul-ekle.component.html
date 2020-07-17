@@ -1,5 +1,6 @@
 <h2 class="content-block">Modül Ekle
     <dx-button style="float: right;" type="success" text="Kaydet" (onClick)="modulKaydet()"></dx-button>
+    <dx-button style="float: right; margin-right: 5px;" type="danger" text="Sil" visible="silVisible()" (onClick)="modulSil()"></dx-button>
 </h2>
 <div class="content-block dx-card responsive-paddings">
     <dx-form id="form" [formData]="modul" labelLocation="top" [colCountByScreen]="colCountByScreen">

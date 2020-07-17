@@ -1,78 +1,102 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
 
-namespace NecSys.Api.Controllers
-{
+namespace NecSys.Api.Controllers {
     [ApiController]
-    [Route("[controller]")]
-    public class ModulController : ControllerBase
-    {
+    [Route ("[controller]")]
+    public class ModulController : ControllerBase {
+
+        private string ToFullFileName (string id, string dir = "Moduller") => Path.Combine (dir, id + ".json");
+
         [HttpPost]
-        public async Task<ResultDto> Post([FromBody] PostDto values)
-        {
-            try
-            {
+        public async Task<ResultDto> Post ([FromBody] PostDto values) {
+            try {
 
-                var item = JsonSerializer.Deserialize<Modul>(values.values);
+                var item = JsonSerializer.Deserialize<Modul> (values.values);
 
-                if (!System.IO.Directory.Exists("Moduller"))
-                    System.IO.Directory.CreateDirectory("Moduller");
+                if (!System.IO.Directory.Exists ("Moduller"))
+                    System.IO.Directory.CreateDirectory ("Moduller");
 
-                await System.IO.File.WriteAllTextAsync(Path.Combine("Moduller", item.ad + ".json"), values.values);
+                await System.IO.File.WriteAllTextAsync (ToFullFileName (item.ad), values.values);
 
-                return new ResultDto(true);
-            }
-            catch (System.Exception ex)
-            {
-                return new ResultDto(ex.Message);
+                if (!string.IsNullOrEmpty (item.eskiad))
+                    ModulSil (item.eskiad);
+
+                return new ResultDto (true);
+            } catch (System.Exception ex) {
+                return new ResultDto (ex.Message);
             }
         }
-        [HttpGet]
-        public ResultDto Get()
-        {
-            try
-            {
-                var files = Directory.GetFiles("Moduller");
 
-                return new ResultDto(files);
-            }
-            catch (System.Exception)
-            {
+        [HttpGet]
+        public dynamic Get () {
+            try {
+                var files = Directory.GetFiles ("Moduller");
+
+                var result = files.Where (w => !w.StartsWith ("Silinen")).Select (s => new { Modul = s.Split ("\\").Last ().Replace (".json", "") }).ToList ();
+                return new {
+                    data = result,
+                        totalCount = result.Count
+                };
+            } catch (System.Exception) {
 
                 throw;
             }
         }
 
+        [HttpGet ("{id}")]
+        public async Task<dynamic> Get (string id) {
+            try {
+                var result = await System.IO.File.ReadAllTextAsync (ToFullFileName (id));
+                return result;
+            } catch (System.Exception) {
+                throw;
+            }
+        }
+
+        [HttpDelete ("{id}")]
+        public ResultDto Delete (string id) {
+            return ModulSil (id);
+        }
+        private ResultDto ModulSil (string id) {
+            try {
+
+                if (!System.IO.Directory.Exists ("SilinenModuller"))
+                    System.IO.Directory.CreateDirectory ("SilinenModuller");
+
+                System.IO.File.Move (ToFullFileName (id), ToFullFileName (id + DateTime.Now.Ticks, "SilinenModuller"));
+
+                return new ResultDto (true);
+            } catch (System.Exception ex) {
+                return new ResultDto (ex.Message);
+            }
+        }
     }
 
-    public class PostDto
-    {
+    public class PostDto {
         public string values { get; set; }
     }
 
-    public class Modul
-    {
+    public class Modul {
         public string ad { get; set; }
+        public string eskiad { get; set; }
     }
-    public class ResultDto
-    {
+    public class ResultDto {
         public bool success { get; set; }
         public dynamic result { get; set; }
         public string error { get; set; }
-        public ResultDto(dynamic result)
-        {
+        public ResultDto (dynamic result) {
             this.result = result;
             success = true;
         }
-        public ResultDto(string error)
-        {
+        public ResultDto (string error) {
             this.error = error;
             success = false;
         }

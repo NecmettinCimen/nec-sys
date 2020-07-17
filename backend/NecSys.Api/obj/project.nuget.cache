@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/cJl0x4bPLAD1FCyPavZ3LXnc0TlvP6gST+fvQ04J3AFa2VAI6PxKYKQOj1vDs0Za9f3ed12oILmObYcQU4LzA==",
+  "dgSpecHash": "y54GtkmKctNdwe55tobEZToZ5JSCYN0fFIcYisqUQovY3XThaB0rYRfpaMCIAuRqqNEnLxAwmHrkYMTMuS7FHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\g3250\\Desktop\\NecSys\\backend\\NecSys.Api\\NecSys.Api.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\necmettin\\necsys\\backend\\NecSys.Api\\NecSys.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
   "logs": []
 }
