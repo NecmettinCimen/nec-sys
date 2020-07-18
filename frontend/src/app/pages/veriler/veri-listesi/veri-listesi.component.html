@@ -1,0 +1,57 @@
+<h2 class="content-block">
+  Veri Listesi
+  <dx-button
+    *ngIf="veridatatablegoster"
+    style="float: right;"
+    text="Geri"
+    (onClick)="veridatatablegoster = false"
+  ></dx-button>
+  <dx-button
+    *ngIf="veridatatablegoster"
+    type="success"
+    style="float: right; margin-right: 5px;"
+    text="Düzenle"
+    (onClick)="duzenle()"
+  ></dx-button>
+</h2>
+
+<dx-data-grid
+  *ngIf="!veridatatablegoster"
+  class="content-block dx-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column caption="Modül" dataField="modul" dataType="string"> </dxi-column>
+  <dxi-column caption="İşlemler" cellTemplate="islemler"> </dxi-column>
+  <div *dxTemplate="let d of 'islemler'">
+    <dx-button
+      type="success"
+      (onClick)="veriekle(d)"
+      text="Yeni Veri Ekle"
+    ></dx-button>
+    <dx-button
+      type="default"
+      style="margin-left: 5px;"
+      (onClick)="verigoster(d)"
+      text="Verileri Göster"
+    ></dx-button>
+  </div>
+</dx-data-grid>
+
+<dx-data-grid
+  #dataGrid
+  *ngIf="veridatatablegoster"
+  class="content-block dx-card"
+  [dataSource]="verilist"
+  [showBorders]="false"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+>
+  <dxo-selection mode="multiple" showCheckBoxesMode="always"></dxo-selection>
+</dx-data-grid>

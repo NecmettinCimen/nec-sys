@@ -6,14 +6,16 @@ import { LoginFormComponent } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { ModulEkleComponent } from './pages/moduller/modul-ekle/modul-ekle.component';
 import { ModulListesiComponent } from './pages/moduller/modul-listesi/modul-listesi.component';
+import { VeriListesiComponent } from './pages/veriler/veri-listesi/veri-listesi.component';
+import { VeriEkleComponent } from './pages/veriler/veri-ekle/veri-ekle.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { DisplayDataComponent } from './pages/display-data/display-data.component';
 import {
   DxDataGridModule,
   DxFormModule,
   DxButtonModule,
   DxResponsiveBoxModule,
+  DxPopupModule,
+  DxTextBoxModule
 } from 'devextreme-angular';
 
 const routes: Routes = [
@@ -38,13 +40,18 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'display-data',
-    component: DisplayDataComponent,
+    path: 'veri-listesi',
+    component: VeriListesiComponent,
     canActivate: [AuthGuardService],
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'veri-ekle',
+    component: VeriEkleComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'veri-duzenle',
+    component: VeriEkleComponent,
     canActivate: [AuthGuardService],
   },
   {
@@ -68,6 +75,8 @@ const routes: Routes = [
     DxFormModule,
     DxButtonModule,
     DxResponsiveBoxModule,
+    DxPopupModule,
+    DxTextBoxModule
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],
@@ -75,8 +84,8 @@ const routes: Routes = [
     HomeComponent,
     ModulEkleComponent,
     ModulListesiComponent,
-    ProfileComponent,
-    DisplayDataComponent,
+    VeriListesiComponent,
+    VeriEkleComponent,
   ],
 })
 export class AppRoutingModule {}

@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NecSys.Api.Models;
 
 namespace NecSys.Api.Controllers {
     [ApiController]
@@ -16,7 +17,7 @@ namespace NecSys.Api.Controllers {
         private string ToFullFileName (string id, string dir = "Moduller") => Path.Combine (dir, id + ".json");
 
         [HttpPost]
-        public async Task<ResultDto> Post ([FromBody] PostDto values) {
+        public async Task<ResultDto> Post ([FromBody] ModulPostDto values) {
             try {
 
                 var item = JsonSerializer.Deserialize<Modul> (values.values);
@@ -77,28 +78,6 @@ namespace NecSys.Api.Controllers {
             } catch (System.Exception ex) {
                 return new ResultDto (ex.Message);
             }
-        }
-    }
-
-    public class PostDto {
-        public string values { get; set; }
-    }
-
-    public class Modul {
-        public string ad { get; set; }
-        public string eskiad { get; set; }
-    }
-    public class ResultDto {
-        public bool success { get; set; }
-        public dynamic result { get; set; }
-        public string error { get; set; }
-        public ResultDto (dynamic result) {
-            this.result = result;
-            success = true;
-        }
-        public ResultDto (string error) {
-            this.error = error;
-            success = false;
         }
     }
 

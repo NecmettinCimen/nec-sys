@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Modul } from '../../../models/Modul';
 import { ActivatedRoute, Router } from '@angular/router';
 import { isNullOrUndefined } from 'util';
+import { ApiUtilService } from 'src/app/services/api-util.service';
 @Component({
   templateUrl: 'modul-ekle.component.html',
 })
@@ -11,15 +11,18 @@ export class ModulEkleComponent {
   alanlar: Array<any>;
   colCountByScreen: object;
   id: string;
+  silPopupShow: boolean = false;
+  uyariPopupShow: boolean = false;
+  bosalanad: string = '';
 
   public silVisible() {
     return !isNullOrUndefined(this.id);
   }
 
   constructor(
-    private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private apiUtil: ApiUtilService
   ) {
     this.modul = {
       ad: '',
@@ -27,7 +30,6 @@ export class ModulEkleComponent {
       aktif: true,
     };
     this.alanlar = [];
-    this.id = null;
     this.colCountByScreen = {
       xs: 1,
       sm: 2,
@@ -36,17 +38,13 @@ export class ModulEkleComponent {
     };
   }
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    if (!isNullOrUndefined(id)) this.modulGetir(id);
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.silVisible()) this.modulGetir();
   }
 
-  private async modulGetir(id: string) {
-    this.id = id;
+  private async modulGetir() {
+    var result = await this.apiUtil.get<any>(`/Modul/${this.id}`);
 
-    var result = await this.http
-      .get<any>(`https://localhost:5001/Modul/${id}`)
-      .toPromise();
-    console.log(result);
     this.modul = {
       ad: result.ad,
       aciklama: result.aciklama,
@@ -59,12 +57,15 @@ export class ModulEkleComponent {
     let id = this.alanlar.length + 1;
     this.alanlar.push({ id: id, ad: '', tip: '', ilkdeger: '' });
   }
-  public alanKaldir(item) {
+  public alanKaldir(item: any) {
     this.alanlar = this.alanlar.filter((f) => f.id != item.id);
   }
   public async modulKaydet() {
-    const header = new HttpHeaders().set('Content-type', 'application/json');
-
+    if (this.modul.ad === '') {
+      this.bosalanad = 'Modül Adı';
+      this.uyariPopupShow = true;
+      return;
+    }
     let values = JSON.stringify({
       ad: this.modul.ad,
       eskiad: this.id,
@@ -73,18 +74,14 @@ export class ModulEkleComponent {
       alanlar: this.alanlar,
     });
     let modul = new Modul(values);
-    const body = JSON.stringify(modul);
 
-    var result = await this.http
-      .post<any>('https://localhost:5001/Modul', body, { headers: header })
-      .toPromise();
+    var result = await this.apiUtil.post<any>('/Modul', modul);
+
     if (result.success) this.router.navigate(['/modul-listesi']);
   }
 
   public async modulSil() {
-    var result = await this.http
-      .delete<any>(`https://localhost:5001/Modul/${this.id}`)
-      .toPromise();
+    var result = await this.apiUtil.delete<any>(`/Modul/${this.id}`);
     if (result.success) this.router.navigate(['/modul-listesi']);
   }
 }

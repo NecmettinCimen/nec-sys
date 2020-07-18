@@ -21,7 +21,6 @@ C:\Users\g3250\Desktop\NecSys\backend\NecSys.Api\obj\Debug\netcoreapp3.1\NecSys.
 C:\Users\g3250\Desktop\NecSys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\Website.json
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\appsettings.json
-C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\Website.json
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\NecSys.Api.exe
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\NecSys.Api.deps.json
@@ -40,5 +39,12 @@ C:\necmettin\necsys\backend\NecSys.Api\obj\Debug\netcoreapp3.1\staticwebassets\N
 C:\necmettin\necsys\backend\NecSys.Api\obj\Debug\netcoreapp3.1\NecSys.Api.dll
 C:\necmettin\necsys\backend\NecSys.Api\obj\Debug\netcoreapp3.1\NecSys.Api.pdb
 C:\necmettin\necsys\backend\NecSys.Api\obj\Debug\netcoreapp3.1\NecSys.Api.genruntimeconfig.cache
-C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\Componentler.json
 C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\SilinenModuller\test637306283302391661.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\Component.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\Projeler.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\SilinenModuller\Componentler637306287768818082.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\SilinenModuller\Website2637306287558888358.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\SilinenModuller\Website637306285350190889.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Moduller\test.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\Veriler\Component.json
+C:\necmettin\necsys\backend\NecSys.Api\bin\Debug\netcoreapp3.1\SilinenVeriler\Component.json

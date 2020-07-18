@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { createStore } from 'devextreme-aspnet-data-nojquery';
 import CustomStore from 'devextreme/data/custom_store';
 import { Router } from '@angular/router';
+import { ApiUtilService } from 'src/app/services/api-util.service';
 
 @Component({
   templateUrl: 'modul-listesi.component.html',
@@ -9,15 +10,13 @@ import { Router } from '@angular/router';
 export class ModulListesiComponent {
   dataSource: CustomStore;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private apiUtil: ApiUtilService) {
     this.dataSource = createStore({
       key: 'modul',
-      loadUrl: 'https://localhost:5001/Modul',
+      loadUrl: `${apiUtil.baseUrl}/Modul`,
     });
   }
-  public duzenle(e) {
-    console.log(e);
-    console.log({ id: e.key })
+  public duzenle(e: any) {
     this.router.navigate(['/modul-duzenle', { id: e.key }]);
   }
 }

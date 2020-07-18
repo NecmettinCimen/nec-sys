@@ -1,18 +1,86 @@
-<h2 class="content-block">Modül Ekle
-    <dx-button style="float: right;" type="success" text="Kaydet" (onClick)="modulKaydet()"></dx-button>
-    <dx-button style="float: right; margin-right: 5px;" type="danger" text="Sil" visible="silVisible()" (onClick)="modulSil()"></dx-button>
+<h2 class="content-block">
+  Modül Ekle
+  <dx-button
+    style="float: right;"
+    type="success"
+    text="Kaydet"
+    (onClick)="modulKaydet()"
+  ></dx-button>
+  <dx-button
+    style="float: right; margin-right: 5px;"
+    type="danger"
+    text="Sil"
+    *ngIf="silVisible()"
+    (onClick)="silPopupShow = true"
+  ></dx-button>
 </h2>
 <div class="content-block dx-card responsive-paddings">
-    <dx-form id="form" [formData]="modul" labelLocation="top" [colCountByScreen]="colCountByScreen">
-    </dx-form>
-    <dx-button type="default" text="Alan Ekle" (onClick)="alanEkle()">Alan Ekle</dx-button>
+  <dx-form
+    id="form"
+    [formData]="modul"
+    labelLocation="top"
+    [colCountByScreen]="colCountByScreen"
+  >
+  </dx-form>
+  <dx-button type="default" text="Alan Ekle" (onClick)="alanEkle()"
+    >Alan Ekle</dx-button
+  >
 </div>
-<div *ngFor="let item of alanlar;index as i" class="content-block dx-card responsive-paddings">
-    <label>{{item.id}}. Alan</label>
-    <dx-form id="alanlar_{{i}}" [formData]="item" labelLocation="top" [colCountByScreen]="colCountByScreen">
-        <dxi-item dataField="ad"></dxi-item>
-        <dxi-item dataField="tip"></dxi-item>
-        <dxi-item dataField="ilkdeger"></dxi-item>
-    </dx-form>
-    <dx-button type="danger" text="Kaldır" (onClick)="alanKaldir(item)"></dx-button>
+<div
+  *ngFor="let item of alanlar; index as i"
+  class="content-block dx-card responsive-paddings"
+>
+  <label>{{ item.id }}. Alan</label>
+  <dx-form
+    id="alanlar_{{ i }}"
+    [formData]="item"
+    labelLocation="top"
+    [colCountByScreen]="colCountByScreen"
+  >
+    <dxi-item dataField="ad"></dxi-item>
+    <dxi-item dataField="tip"></dxi-item>
+    <dxi-item dataField="ilkdeger"></dxi-item>
+  </dx-form>
+  <dx-button
+    type="danger"
+    text="Kaldır"
+    (onClick)="alanKaldir(item)"
+  ></dx-button>
 </div>
+<dx-popup
+  title="Sil"
+  [width]="300"
+  [height]="250"
+  [showTitle]="true"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="silPopupShow"
+>
+  <div *dxTemplate="let data of 'content'">
+    <p>Bu Kaydı Silmek İstediğinize Emin Misiniz?</p>
+
+    <dx-button text="İptal" (onClick)="silPopupShow = false"> </dx-button>
+    <dx-button
+      style="margin-left: 5px;"
+      text="Evet! Sil"
+      (onClick)="modulSil()"
+      type="danger"
+    >
+    </dx-button>
+  </div>
+</dx-popup>
+<dx-popup
+  title="Uyarı"
+  [width]="300"
+  [height]="200"
+  [showTitle]="true"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="uyariPopupShow"
+>
+  <div *dxTemplate="let data of 'content'">
+    <p>Lütfen {{ bosalanad }} alanını doldurunuz</p>
+
+    <dx-button text="Tamam" (onClick)="uyariPopupShow = false"> </dx-button>
+  </div>
+</dx-popup>

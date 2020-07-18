@@ -2,7 +2,7 @@ export const navigation = [
   {
     text: 'Home',
     path: '/home',
-    icon: 'home'
+    icon: 'home',
   },
   {
     text: 'Modüller',
@@ -10,26 +10,17 @@ export const navigation = [
     items: [
       {
         text: 'Modül Ekle',
-        path: '/modul-ekle'
+        path: '/modul-ekle',
       },
       {
         text: 'Modül Listesi',
-        path: '/modul-listesi'
-      }
-    ]
+        path: '/modul-listesi',
+      },
+    ],
   },
   {
-    text: 'Examples',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Display Data',
-        path: '/display-data'
-      }
-    ]
-  }
+    text: 'Veri Listesi',
+    path: '/veri-listesi',
+    icon: 'datafield',
+  },
 ];
