@@ -1,0 +1,37 @@
+<h2 class="content-block">
+  Dosya Ekle
+  <dx-button
+    style="float: right;"
+    type="success"
+    text="Kaydet"
+    (onClick)="dosyaKaydet()"
+  ></dx-button>
+</h2>
+<div class="content-block dx-card responsive-paddings">
+  <div class="dx-fieldset">
+    <div class="dx-field">
+      <div class="dx-field-label">Dosya</div>
+      <input
+        (change)="handleFileInput($event.target.files)"
+        type="file"
+        class="form-control"
+      />
+    </div>
+  </div>
+</div>
+
+<dx-popup
+  title="Uyarı"
+  [width]="300"
+  [height]="200"
+  [showTitle]="true"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="uyariPopupShow"
+>
+  <div *dxTemplate="let data of 'content'">
+    <p>Lütfen dosya alanını doldurunuz</p>
+
+    <dx-button text="Tamam" (onClick)="uyariPopupShow = false"> </dx-button>
+  </div>
+</dx-popup>

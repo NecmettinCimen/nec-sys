@@ -11,7 +11,6 @@ export class VeriEkleComponent {
   alanlar: Array<any> = [];
   id: string;
   silPopupShow: boolean = false;
-  uyariPopupShow: boolean = false;
   bosalanad: string = '';
   formstr: string = '{}';
 

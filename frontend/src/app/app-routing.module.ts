@@ -8,6 +8,8 @@ import { ModulEkleComponent } from './pages/moduller/modul-ekle/modul-ekle.compo
 import { ModulListesiComponent } from './pages/moduller/modul-listesi/modul-listesi.component';
 import { VeriListesiComponent } from './pages/veriler/veri-listesi/veri-listesi.component';
 import { VeriEkleComponent } from './pages/veriler/veri-ekle/veri-ekle.component';
+import { DosyaListesiComponent } from './pages/dosyalar/dosya-listesi/dosya-listesi.component';
+import { DosyaEkleComponent } from './pages/dosyalar/dosya-ekle/dosya-ekle.component';
 import { HomeComponent } from './pages/home/home.component';
 import {
   DxDataGridModule,
@@ -15,7 +17,8 @@ import {
   DxButtonModule,
   DxResponsiveBoxModule,
   DxPopupModule,
-  DxTextBoxModule
+  DxTextBoxModule,
+  DxTextAreaModule
 } from 'devextreme-angular';
 
 const routes: Routes = [
@@ -55,6 +58,16 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
+    path: 'dosya-listesi',
+    component: DosyaListesiComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'dosya-ekle',
+    component: DosyaEkleComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'login-form',
     component: LoginFormComponent,
     canActivate: [AuthGuardService],
@@ -76,7 +89,8 @@ const routes: Routes = [
     DxButtonModule,
     DxResponsiveBoxModule,
     DxPopupModule,
-    DxTextBoxModule
+    DxTextBoxModule,
+    DxTextAreaModule
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],
@@ -86,6 +100,8 @@ const routes: Routes = [
     ModulListesiComponent,
     VeriListesiComponent,
     VeriEkleComponent,
+    DosyaListesiComponent,
+    DosyaEkleComponent,
   ],
 })
 export class AppRoutingModule {}

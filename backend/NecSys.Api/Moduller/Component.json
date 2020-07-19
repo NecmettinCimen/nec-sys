@@ -1,1 +1,1 @@
-{"ad":"Component","eskiad":"Componentler","aciklama":"Web Sitesi üzerindeki komponentlerin saklandıgı kısımdır","aktif":true,"alanlar":[{"id":1,"ad":"ad","tip":"string","ilkdeger":""},{"id":2,"ad":"aciklama","tip":"string","ilkdeger":""}]}
+{"ad":"Component","eskiad":"Component","aciklama":"Web Sitesi üzerindeki komponentlerin saklandıgı kısımdır","aktif":true,"alanlar":[{"id":1,"ad":"ad","tip":"string","ilkdeger":""},{"id":2,"ad":"aciklama","tip":"text-area","ilkdeger":""}]}

@@ -23,4 +23,18 @@ export const navigation = [
     path: '/veri-listesi',
     icon: 'datafield',
   },
+  {
+    text: 'Dosyalar',
+    icon: 'doc',
+    items: [
+      {
+        text: 'Dosya Ekle',
+        path: '/dosya-ekle',
+      },
+      {
+        text: 'Dosya Listesi',
+        path: '/dosya-listesi',
+      },
+    ],
+  },
 ];

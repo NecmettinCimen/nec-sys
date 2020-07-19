@@ -33,8 +33,8 @@ export class VeriListesiComponent {
     this.id = this.route.snapshot.paramMap.get('id');
     if (!isNullOrUndefined(this.id)) this.verigoster({ key: this.id });
   }
-  public veriekle(e: any) {
-    this.router.navigate(['/veri-ekle', { modul: e.key }]);
+  public async veriekle(e: any) {
+    await this.router.navigate(['/veri-ekle', { modul: e.key }]);
   }
   public async verigoster(e: any) {
     this.modul = e.key;
@@ -44,7 +44,7 @@ export class VeriListesiComponent {
   }
   public async duzenle() {
     var selected = await this.dataGrid.instance.getSelectedRowKeys();
-    this.router.navigate([
+    await this.router.navigate([
       'veri-duzenle',
       { modul: this.modul, id: selected[0].id },
     ]);

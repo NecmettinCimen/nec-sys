@@ -19,4 +19,7 @@ export class ModulListesiComponent {
   public duzenle(e: any) {
     this.router.navigate(['/modul-duzenle', { id: e.key }]);
   }
+  public veriEkle(e: any) {
+    this.router.navigate(['/veri-ekle', { modul: e.key }]);
+  }
 }

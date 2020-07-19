@@ -27,7 +27,7 @@ namespace NecSys.Api.Controllers {
 
                 await System.IO.File.WriteAllTextAsync (ToFullFileName (item.ad), values.values);
 
-                if (!string.IsNullOrEmpty (item.eskiad))
+                if (!string.IsNullOrEmpty (item.eskiad) && item.eskiad != item.ad)
                     ModulSil (item.eskiad);
 
                 return new ResultDto (true);

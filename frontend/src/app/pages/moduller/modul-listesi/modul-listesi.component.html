@@ -15,6 +15,15 @@
 
   <dxi-column caption="Modül" dataField="modul" dataType="string"> </dxi-column>
   <dxi-column caption="İşlemler" cellTemplate="islemler"> </dxi-column>
-  <dx-button *dxTemplate="let d of 'islemler'" (onClick)="duzenle(d)" text="Düzenle"></dx-button>
-
+  <div *dxTemplate="let d of 'islemler'">
+    <dx-button
+      (onClick)="duzenle(d)"
+      text="Düzenle"
+    ></dx-button>
+    <dx-button
+    style="margin-left:5px"
+      (onClick)="veriEkle(d)"
+      text="Veri Ekle"
+    ></dx-button>
+  </div>
 </dx-data-grid>

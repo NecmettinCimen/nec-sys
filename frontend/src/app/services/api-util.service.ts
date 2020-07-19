@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiUtilService {
-  // baseUrl: string = 'https://localhost:5001';
-  baseUrl: string = 'https://necsys.azurewebsites.net';
+  baseUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +20,12 @@ export class ApiUtilService {
     return await this.http
       .post<T>(this.baseUrl + url, body, { headers: header })
       .toPromise();
+  }
+
+  public async postFile<T>(url: string, fileToUpload: File) {
+    const formData: FormData = new FormData();
+    formData.append(`${Date.now()}`, fileToUpload, fileToUpload.name);
+    return await this.http.post<T>(this.baseUrl + url, formData).toPromise();
   }
 
   public async delete<T>(url: string) {

@@ -1,5 +1,5 @@
 <h2 class="content-block">
-  {{ veriadi }} Ekle
+  {{ veriadi }} {{ silVisible() ? "Düzenle" : "Ekle" }}
   <dx-button
     style="float: right;"
     type="success"
@@ -15,18 +15,32 @@
   ></dx-button>
 </h2>
 <div class="content-block dx-card responsive-paddings">
-  <div class="dx-fieldset" *ngFor="let item of alanlar; index as i">
-    <div class="dx-field">
-      <div class="dx-field-label">{{ item.ad }}</div>
-      <div class="dx-field-value">
-        <dx-text-box
-          placeholder="{{ item.ad }}"
-          value="{{ item.ilkdeger }}"
-          [showClearButton]="true"
-          valueChangeEvent="change"
-          (onValueChanged)="valueChanged(item.ad, $event.value)"
-        ></dx-text-box>
-      </div>
+  <div class="full-width-content" *ngFor="let item of alanlar; index as i">
+    <div class="dx-fieldset">
+      <div class="dx-fieldset-header">{{ item.ad }}</div>
+      <dx-text-box
+        *ngIf="item.tip == 'text-box'"
+        placeholder="{{ item.ad }}"
+        value="{{ item.ilkdeger }}"
+        [showClearButton]="true"
+        valueChangeEvent="change"
+        (onValueChanged)="valueChanged(item.ad, $event.value)"
+      ></dx-text-box>
+      <dx-text-area
+        *ngIf="item.tip == 'text-area'"
+        placeholder="{{ item.ad }}"
+        value="{{ item.ilkdeger }}"
+        valueChangeEvent="change"
+        (onValueChanged)="valueChanged(item.ad, $event.value)"
+      ></dx-text-area>
+      <dx-text-box
+        *ngIf="item.tip != 'text-area'"
+        placeholder="{{ item.ad }}"
+        value="{{ item.ilkdeger }}"
+        [showClearButton]="true"
+        valueChangeEvent="change"
+        (onValueChanged)="valueChanged(item.ad, $event.value)"
+      ></dx-text-box>
     </div>
   </div>
 </div>
@@ -51,20 +65,5 @@
       type="danger"
     >
     </dx-button>
-  </div>
-</dx-popup>
-<dx-popup
-  title="Uyarı"
-  [width]="300"
-  [height]="200"
-  [showTitle]="true"
-  [dragEnabled]="false"
-  [closeOnOutsideClick]="true"
-  [(visible)]="uyariPopupShow"
->
-  <div *dxTemplate="let data of 'content'">
-    <p>Lütfen {{ bosalanad }} alanını doldurunuz</p>
-
-    <dx-button text="Tamam" (onClick)="uyariPopupShow = false"> </dx-button>
   </div>
 </dx-popup>

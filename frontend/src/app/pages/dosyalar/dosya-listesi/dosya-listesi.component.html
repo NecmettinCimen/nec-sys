@@ -1,0 +1,47 @@
+<h2 class="content-block">
+  Dosya Listesi
+  <dx-button
+    style="float: right;"
+    text="İndir"
+    (onClick)="dosyaIndir()"
+  ></dx-button>
+  <dx-button
+    type="danger"
+    style="float: right; margin-right: 5px;"
+    text="Sil"
+    (onClick)="silPopupShow = true"
+  ></dx-button>
+</h2>
+
+<dx-data-grid
+  #dataGrid
+  class="content-block dx-card"
+  [dataSource]="dosyaList"
+  [showBorders]="false"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+>
+  <dxo-selection mode="multiple" showCheckBoxesMode="always"></dxo-selection>
+</dx-data-grid>
+<dx-popup
+  title="Sil"
+  [width]="300"
+  [height]="250"
+  [showTitle]="true"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="silPopupShow"
+>
+  <div *dxTemplate="let data of 'content'">
+    <p>Bu Dosyayı Silmek İstediğinize Emin Misiniz?</p>
+
+    <dx-button text="İptal" (onClick)="silPopupShow = false"> </dx-button>
+    <dx-button
+      style="margin-left: 5px;"
+      text="Evet! Sil"
+      (onClick)="dosyaSil()"
+      type="danger"
+    >
+    </dx-button>
+  </div>
+</dx-popup>

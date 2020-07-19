@@ -8,10 +8,17 @@
   ></dx-button>
   <dx-button
     *ngIf="veridatatablegoster"
-    type="success"
+    type="default"
     style="float: right; margin-right: 5px;"
     text="Düzenle"
     (onClick)="duzenle()"
+  ></dx-button>
+  <dx-button
+    *ngIf="veridatatablegoster"
+    type="success"
+    style="float: right; margin-right: 5px;"
+    text="Ekle"
+    (onClick)="veriekle({ key: this.modul })"
   ></dx-button>
 </h2>
 
