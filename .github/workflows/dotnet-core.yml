@@ -28,11 +28,11 @@ jobs:
       working-directory: ./backend/NecSys.Api
     - name: Publish
       run: |
-        dotnet publish -c Release -o necsys.api
+        dotnet publish -c Release -o necsysapi
       working-directory: ./backend/NecSys.Api
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v1
       with: 
         app-name: necsys # Replace with your app name
         publish-profile: $ # Define secret variable in repository settings as per action documentation
-        package: './necsys.api' 
+        package: './necsysapi' 
