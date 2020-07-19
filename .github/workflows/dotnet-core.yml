@@ -28,7 +28,8 @@ jobs:
       working-directory: ./backend/NecSys.Api
     - name: Publish
       run: |
-        dotnet publish -c Release -o necsys.api 
+        dotnet publish -c Release -o necsys.api
+      working-directory: ./backend/NecSys.Api
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v1
       with: 
