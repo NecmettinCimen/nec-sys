@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://necsys.azurewebsites.net',
+  apiUrl: 'https://nec-sys-api.necmettincimen.xyz',
 };

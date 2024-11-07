@@ -1,7 +1,7 @@
 version: '1.0'
 
 services:
-  cmsapi:
+  nec-sys-api:
     container_name: nec-sys-api
     build:
       context: .

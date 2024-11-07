@@ -1,0 +1,15 @@
+version: '1.0'
+
+services:
+  nec-sys-web:
+    container_name: nec-sys-web
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: always
+    ports:
+      - 8086:80
+
+networks:
+  default:
+      name: srvnecmettin
