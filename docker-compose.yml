@@ -1,0 +1,17 @@
+version: '1.0'
+
+services:
+  cmsapi:
+    container_name: nec-sys-api
+    build:
+      context: .
+      dockerfile: backend/NecSys.Api/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 8085:80
+
+networks:
+  default:
+      name: srvnecmettin

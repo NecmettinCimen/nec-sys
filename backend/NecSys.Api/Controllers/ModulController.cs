@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NecSys.Api.Models;
 
-namespace NecSys.Api.Controllers {
+namespace NecSys.Api.Controllers
+{
     [ApiController]
     [Route ("[controller]")]
     public class ModulController : ControllerBase {
@@ -22,8 +20,8 @@ namespace NecSys.Api.Controllers {
 
                 var item = JsonSerializer.Deserialize<Modul> (values.values);
 
-                if (!System.IO.Directory.Exists ("Moduller"))
-                    System.IO.Directory.CreateDirectory ("Moduller");
+                if (!Directory.Exists ("Moduller"))
+                    Directory.CreateDirectory ("Moduller");
 
                 await System.IO.File.WriteAllTextAsync (ToFullFileName (item.ad), values.values);
 
@@ -69,8 +67,8 @@ namespace NecSys.Api.Controllers {
         private ResultDto ModulSil (string id) {
             try {
 
-                if (!System.IO.Directory.Exists ("SilinenModuller"))
-                    System.IO.Directory.CreateDirectory ("SilinenModuller");
+                if (!Directory.Exists ("SilinenModuller"))
+                    Directory.CreateDirectory ("SilinenModuller");
 
                 System.IO.File.Move (ToFullFileName (id), ToFullFileName (id + DateTime.Now.Ticks, "SilinenModuller"));
 

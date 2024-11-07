@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NecSys.Api.Models;
 
-namespace NecSys.Api.Controllers {
+namespace NecSys.Api.Controllers
+{
 
     [ApiController]
     [Route ("[controller]")]
@@ -23,8 +21,8 @@ namespace NecSys.Api.Controllers {
         public async Task<ResultDto> Post () {
             try {
 
-                if (!System.IO.Directory.Exists (_dir))
-                    System.IO.Directory.CreateDirectory (_dir);
+                if (!Directory.Exists (_dir))
+                    Directory.CreateDirectory (_dir);
 
                 var file = Request.Form.Files.First ();
 
@@ -86,8 +84,8 @@ namespace NecSys.Api.Controllers {
 
                 await System.IO.File.WriteAllTextAsync (ToFullFileName (_file), JsonSerializer.Serialize (list));
 
-                if (!System.IO.Directory.Exists ($"Silinen{_dir}"))
-                    System.IO.Directory.CreateDirectory ($"Silinen{_dir}");
+                if (!Directory.Exists ($"Silinen{_dir}"))
+                    Directory.CreateDirectory ($"Silinen{_dir}");
 
                 System.IO.File.Move (ToFullFileName (item.FileName), ToFullFileName (item.FileName, $"Silinen{_dir}"));
 

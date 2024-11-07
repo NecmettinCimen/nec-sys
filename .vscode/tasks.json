@@ -9,7 +9,7 @@
                 "build",
                 "${workspaceFolder}/backend/NecSys.Api/NecSys.Api.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -21,7 +21,7 @@
                 "publish",
                 "${workspaceFolder}/backend/NecSys.Api/NecSys.Api.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -32,9 +32,8 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/backend/NecSys.Api/NecSys.Api.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "--project",
+                "${workspaceFolder}/backend/NecSys.Api/NecSys.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

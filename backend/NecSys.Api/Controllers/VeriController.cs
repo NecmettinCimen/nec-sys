@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NecSys.Api.Models;
 
-namespace NecSys.Api.Controllers {
+namespace NecSys.Api.Controllers
+{
 
     [ApiController]
     [Route ("[controller]")]
@@ -22,8 +21,8 @@ namespace NecSys.Api.Controllers {
         public async Task<ResultDto> Post ([FromBody] VeriPostDto values) {
             try {
 
-                if (!System.IO.Directory.Exists (_dir))
-                    System.IO.Directory.CreateDirectory (_dir);
+                if (!Directory.Exists (_dir))
+                    Directory.CreateDirectory (_dir);
 
                 List<dynamic> list = new List<dynamic> ();
 
@@ -85,8 +84,8 @@ namespace NecSys.Api.Controllers {
 
                 await System.IO.File.WriteAllTextAsync (ToFullFileName (modul), JsonSerializer.Serialize (list));
 
-                if (!System.IO.Directory.Exists ($"Silinen{_dir}"))
-                    System.IO.Directory.CreateDirectory ($"Silinen{_dir}");
+                if (!Directory.Exists ($"Silinen{_dir}"))
+                    Directory.CreateDirectory ($"Silinen{_dir}");
 
                 await System.IO.File.WriteAllTextAsync (ToFullFileName (modul + DateTime.Now.Ticks, $"Silinen{_dir}"), JsonSerializer.Serialize (item));
 
