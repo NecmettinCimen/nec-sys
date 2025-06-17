@@ -60,10 +60,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-nec-sys App .Net Core 2.2
+nec-sys App .Net Core 8
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
+| WEB | 
+| --- | 
+| [![WEB](nec-sys.png)](nec-sys.png)
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.

@@ -74,6 +74,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "/nec-sys/",
               "budgets": [
                 {
                   "type": "initial",
