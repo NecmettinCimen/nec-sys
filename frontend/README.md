@@ -4,6 +4,12 @@ The DevExtreme Angular Template is an Angular application with a navigation menu
 
 ![DevExtreme-Angular-Template](https://user-images.githubusercontent.com/2280467/74529582-7bfb0500-4f39-11ea-830f-b8583c7a5478.png)
 
+## Node.js Compatibility
+
+This project uses Angular 9.1.4 and is compatible with Node.js versions 12-16. If you're using Node.js 17+ and encounter OpenSSL errors, the project is configured to use the legacy OpenSSL provider automatically.
+
+**Recommended Node.js version:** 16.20.0 (see `.nvmrc` file)
+
 ## Getting Started
 
 For more information about the DevExtreme Angular Template and how to customize it, refer to the following help topic: [Create a DevExtreme Application](https://js.devexpress.com/Documentation/Guide/Angular_Components/Getting_Started/Create_a_DevExtreme_Application/).
